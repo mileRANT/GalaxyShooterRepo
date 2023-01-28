@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 3.5f;
+    private float _speed = 8f;
     public float horizontalInput;
     public float verticalInput;
 
@@ -19,21 +19,30 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-//        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        cleanMove();
+    }
+
+    void moveHorizontal()
+    {
+        transform.Translate(Vector3.right * horizontalInput * _speed * Time.deltaTime);
+    }
+    void moveVertical()
+    {
+        transform.Translate(Vector3.up * verticalInput * _speed * Time.deltaTime);
+    }
+
+    void cleanMove()
+    {
+        //        transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        //if (horizontalInput != 0)
-        //{
-        //    moveHorizontal();
-        //}
-        //if (verticalInput != 0)
-        //{
-        //    moveVertical();
-        //}
+
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         transform.Translate(direction * _speed * Time.deltaTime);
 
+
+        //the below does wrap around. if we wanted to limit movement, we could simplify to a mathf.clamp
         //player boundary vertical
         if (transform.position.y > 7.5)
         {
@@ -52,14 +61,5 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
-    }
-
-    void moveHorizontal()
-    {
-        transform.Translate(Vector3.right * horizontalInput * _speed * Time.deltaTime);
-    }
-    void moveVertical()
-    {
-        transform.Translate(Vector3.up * verticalInput * _speed * Time.deltaTime);
     }
 }
