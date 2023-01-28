@@ -33,6 +33,25 @@ public class Player : MonoBehaviour
         //}
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         transform.Translate(direction * _speed * Time.deltaTime);
+
+        //player boundary vertical
+        if (transform.position.y > 7.5)
+        {
+            transform.position = new Vector3(transform.position.x, -5.6f, 0);
+        }
+        else if (transform.position.y < -5.6f)
+        {
+            transform.position = new Vector3(transform.position.x, 7.5f, 0);
+        }
+        //player boundary horizontal
+        if (transform.position.x > 11.3)
+        {
+            transform.position = new Vector3(-11.3f, transform.position.y, 0);
+        }
+        else if (transform.position.x < -11.3)
+        {
+            transform.position = new Vector3(11.3f, transform.position.y, 0);
+        }
     }
 
     void moveHorizontal()
