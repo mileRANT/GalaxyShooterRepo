@@ -12,12 +12,20 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _laser;
     [SerializeField]
+    private GameObject _tripleLaser;
     private float _fireRate = 0.5f;
     private float _canFire = -1f;
     [SerializeField]
     private int _lives = 3;
 
     private SpawnManager _spawnManager;
+
+    [SerializeField] //for testing purposes
+    private bool _isTripleShotActive;
+    [SerializeField] //for testing purposes
+    private bool _isSpeedupActive;
+    [SerializeField] //for testing purposes
+    private bool _isShieldActive;
 
     // Start is called before the first frame update
     void Start()
@@ -91,11 +99,26 @@ public class Player : MonoBehaviour
         _canFire = Time.time + _fireRate;
         Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 0.85f, transform.position.z);
         //Instantiate(_laser, transform.position, Quaternion.identity);
-        Instantiate(_laser, laserPos, Quaternion.identity);
+
+        if (_isTripleShotActive)
+        {
+            Instantiate(_tripleLaser, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(_laser, laserPos, Quaternion.identity);
+        }
+        
     }
     
     public void Damage()
     {
+        if (_isShieldActive)
+        {
+            _isShieldActive = false;
+            return;
+        }
+
         _lives--;
 
         //check if dead
@@ -106,5 +129,42 @@ public class Player : MonoBehaviour
             //communicate with spawnmanager to stop spawning more
             _spawnManager.onPlayerDeath(); 
         }
+    }
+
+    public void PowerUpTriple()
+    {
+        _isTripleShotActive = true;
+        //start a power down coroutine
+        StartCoroutine("StopTripleShot");
+    }
+
+    public void PowerUpSpeed()
+    {
+        _isSpeedupActive = true;
+        _speed += 5f;
+        //start a power down coroutine
+        StartCoroutine("StopSpeedUp");
+    }
+
+    public void PowerUpShield()
+    {
+        _isShieldActive = true;
+        //start a power down coroutine
+        //StartCoroutine("StopTripleShot");
+    }
+
+    //tripleshot powerdown coroutine to remove triple shot in 5 seconds.
+    IEnumerator StopTripleShot()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _isTripleShotActive = false;
+    }
+
+    //speed up powerdown coroutine to remove speed boost in 5 seconds.
+    IEnumerator StopSpeedUp()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _speed -= 5f;
+        _isSpeedupActive = false;
     }
 }
