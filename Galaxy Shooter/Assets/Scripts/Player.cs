@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     private bool _isSpeedupActive;
     [SerializeField] //for testing purposes
     private bool _isShieldActive;
+    [SerializeField]
+    private GameObject shieldObject;
 
     // Start is called before the first frame update
     void Start()
@@ -115,6 +117,7 @@ public class Player : MonoBehaviour
     {
         if (_isShieldActive)
         {
+            shieldObject.SetActive(false);
             _isShieldActive = false;
             return;
         }
@@ -149,9 +152,11 @@ public class Player : MonoBehaviour
     public void PowerUpShield()
     {
         _isShieldActive = true;
+        shieldObject.SetActive(true);
         //start a power down coroutine
         //StartCoroutine("StopTripleShot");
     }
+
 
     //tripleshot powerdown coroutine to remove triple shot in 5 seconds.
     IEnumerator StopTripleShot()
