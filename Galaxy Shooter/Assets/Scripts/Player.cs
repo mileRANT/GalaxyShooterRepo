@@ -30,6 +30,10 @@ public class Player : MonoBehaviour
     private bool _isShieldActive;
     [SerializeField]
     private GameObject shieldObject;
+    [SerializeField]
+    private GameObject _rightHurtObject;
+    [SerializeField]
+    private GameObject _leftHurtObject;
 
     private UIManager _uiManager;
 
@@ -143,6 +147,14 @@ public class Player : MonoBehaviour
             _uiManager.showGameOver();
             //communicate with spawnmanager to stop spawning more
             _spawnManager.onPlayerDeath(); 
+        }
+        if (_lives == 2)
+        {
+            _rightHurtObject.SetActive(true);
+        }
+        if (_lives == 1)
+        {
+            _leftHurtObject.SetActive(true);
         }
     }
 
