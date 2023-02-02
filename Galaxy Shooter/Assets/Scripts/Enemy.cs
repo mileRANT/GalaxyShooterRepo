@@ -6,10 +6,22 @@ public class Enemy : MonoBehaviour
 {
     private float _speed = 6f;
     private Player _player;
+    private Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
          _player = GameObject.Find("Player").GetComponent<Player>();
+        if (_player == null)
+        {
+            Debug.LogError("No player found");
+        }
+
+        _animator = this.gameObject.GetComponent<Animator>();
+        if (_animator == null)
+        {
+            Debug.LogError("No animator component found");
+        }
+
     }
 
     // Update is called once per frame
@@ -38,13 +50,17 @@ public class Enemy : MonoBehaviour
             {
                 _player.AddScore(10);
             }
-            Destroy(this.gameObject);
+            _animator.SetTrigger("OnEnemyDeath");
+            _speed = _speed / 2;
+            Destroy(this.gameObject,2.6f);
             
         }
         else if (other.tag == "Player")
         {
             other.GetComponent<Player>().Damage();
-            Destroy(this.gameObject);
+            _animator.SetTrigger("OnEnemyDeath");
+            _speed = _speed / 2;
+            Destroy(this.gameObject, 2.6f);
         }
     }
 }
