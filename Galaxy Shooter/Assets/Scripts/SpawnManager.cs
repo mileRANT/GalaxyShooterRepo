@@ -15,10 +15,10 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        //both the below is valid. have both pros and cons
-        //StartCoroutine("SpawnRoutine");
-        StartCoroutine(SpawnEnemyRoutine());
-        StartCoroutine("SpawnPowerUpRoutine");
+        ////both the below is valid. have both pros and cons
+        ////StartCoroutine("SpawnRoutine");
+        //StartCoroutine(SpawnEnemyRoutine());
+        //StartCoroutine("SpawnPowerUpRoutine");
     }
 
     // Update is called once per frame
@@ -55,6 +55,13 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    public void StartSpawnRoutines()
+    {
+        //both the below is valid. have both pros and cons
+        //StartCoroutine("SpawnRoutine");
+        StartCoroutine(SpawnEnemyRoutine());
+        StartCoroutine("SpawnPowerUpRoutine");
+    }
     public void onPlayerDeath()
     {
         _stopSpawning = true;

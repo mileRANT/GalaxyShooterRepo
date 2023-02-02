@@ -10,6 +10,7 @@ public class Asteroid : MonoBehaviour
     private int _asteroidLife = 3;
     [SerializeField]
     private GameObject _explosionPrefab;
+    private SpawnManager _spawnm;
 
     //private Animator _animator;
 
@@ -21,6 +22,13 @@ public class Asteroid : MonoBehaviour
         {
             Debug.LogError("Player is null");
         }
+
+        _spawnm = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        if (_spawnm == null)
+        {
+            Debug.LogError("SpawnManager is null");
+        }
+
         //_animator = GetComponent<Animator>();
         //if (_animator == null)
         //{
@@ -57,7 +65,9 @@ public class Asteroid : MonoBehaviour
                 //instead of animating asteroid explosion as an animation, instantiate it as a prefab and overlay it on the asteroid
                 GameObject _explosion = Instantiate(_explosionPrefab, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject, 0.4f);
+                _spawnm.StartSpawnRoutines();
                 Destroy(_explosion, 2.3f);
+                
             }
 
         }
@@ -71,6 +81,7 @@ public class Asteroid : MonoBehaviour
                 //_animator.SetTrigger("ExplodeAsteroid");
                 GameObject _explosion = Instantiate(_explosionPrefab, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject, 0.4f);
+                _spawnm.StartSpawnRoutines();
                 Destroy(_explosion, 2.3f);
 
             }
