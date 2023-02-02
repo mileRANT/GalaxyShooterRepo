@@ -32,6 +32,8 @@ public class SpawnManager : MonoBehaviour
     //coroutine of type ienumerator as we need the yield call
     IEnumerator SpawnEnemyRoutine()
     {
+        yield return new WaitForSeconds(2f); //added so that they do not spawn right away
+
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
@@ -44,6 +46,8 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnPowerUpRoutine()
     {
+        yield return new WaitForSeconds(2f);
+
         while (!_stopSpawning)
         {
 
@@ -64,6 +68,7 @@ public class SpawnManager : MonoBehaviour
     }
     public void onPlayerDeath()
     {
+
         _stopSpawning = true;
     }
 }

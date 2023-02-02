@@ -64,9 +64,9 @@ public class Asteroid : MonoBehaviour
                 //_animator.SetTrigger("ExplodeAsteroid");
                 //instead of animating asteroid explosion as an animation, instantiate it as a prefab and overlay it on the asteroid
                 GameObject _explosion = Instantiate(_explosionPrefab, this.gameObject.transform.position, Quaternion.identity);
-                Destroy(this.gameObject, 0.4f);
                 _spawnm.StartSpawnRoutines();
-                Destroy(_explosion, 2.3f);
+                Destroy(this.gameObject, 0.4f);
+                //Destroy(_explosion, 2.3f); explosion is destroyed automatically in its own script
                 
             }
 
@@ -80,9 +80,9 @@ public class Asteroid : MonoBehaviour
             {
                 //_animator.SetTrigger("ExplodeAsteroid");
                 GameObject _explosion = Instantiate(_explosionPrefab, this.gameObject.transform.position, Quaternion.identity);
-                Destroy(this.gameObject, 0.4f);
                 _spawnm.StartSpawnRoutines();
-                Destroy(_explosion, 2.3f);
+                Destroy(this.gameObject, 0.4f);
+                //Destroy(_explosion, 2.3f);
 
             }
         }
