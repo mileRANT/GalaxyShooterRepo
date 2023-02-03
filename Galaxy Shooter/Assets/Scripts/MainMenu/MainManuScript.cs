@@ -19,7 +19,7 @@ public class MainManuScript : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("SinglePlayer");
     }
 
 }
