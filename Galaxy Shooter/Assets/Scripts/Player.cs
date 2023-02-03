@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private bool _isSpeedupActive;
     [SerializeField] //for testing purposes
     private bool _isShieldActive;
+
     [SerializeField]
     private GameObject shieldObject;
     [SerializeField]
@@ -36,6 +37,10 @@ public class Player : MonoBehaviour
     private GameObject _leftHurtObject;
 
     private UIManager _uiManager;
+
+    [SerializeField]
+    private AudioClip _laserSoundClip;
+    private AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +61,16 @@ public class Player : MonoBehaviour
             Debug.LogError("UImanager is null");
         }
         _uiManager.UpdateLives(this._lives);
+
+        _audioSource = this.gameObject.GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            Debug.LogError("Audio Source is null");
+        }
+        else
+        {
+            _audioSource.clip = _laserSoundClip;
+        }
     }
 
     // Update is called once per frame
@@ -117,9 +132,11 @@ public class Player : MonoBehaviour
         Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 0.85f, transform.position.z);
         //Instantiate(_laser, transform.position, Quaternion.identity);
 
+        _audioSource.Play();
         if (_isTripleShotActive)
         {
             Instantiate(_tripleLaser, transform.position, Quaternion.identity);
+            
         }
         else
         {

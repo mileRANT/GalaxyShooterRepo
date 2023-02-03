@@ -6,6 +6,9 @@ public class PowerupScript : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 3.0f;
+    //private AudioSource _audioSource;
+    //or we could serialize this
+    private AudioClip _audioClip;
 
     //ID for powerups
     //0 = tripleshot
@@ -16,6 +19,12 @@ public class PowerupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //_audioSource = this.gameObject.GetComponent<AudioSource>();
+        //if (_audioSource == null)
+        _audioClip = this.gameObject.GetComponent<AudioSource>().clip;
+        {
+            Debug.LogError("No audio clip; is null");
+        }
         
     }
 
@@ -33,6 +42,11 @@ public class PowerupScript : MonoBehaviour
         if (other.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>();
+            //note that this does not work because we destroy the object after
+            //therefore we use an audioclip instead of an audio source. we then play the clip from a point in space
+            //_audioSource.Play();
+            AudioSource.PlayClipAtPoint(_audioClip, transform.position);
+
             if (player != null)
             {
                 switch(_powerupID)
