@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b292e0c84c48f42b122397819806f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _laserPrefab: {fileID: 996993923916064720, guid: 9d3a81d1a7fb60746b111fcd3f9cc52c, type: 3}
 --- !u!95 &3160061616597677565
 Animator:
   serializedVersion: 4

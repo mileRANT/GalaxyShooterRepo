@@ -22,6 +22,7 @@ public class PowerupScript : MonoBehaviour
         //_audioSource = this.gameObject.GetComponent<AudioSource>();
         //if (_audioSource == null)
         _audioClip = this.gameObject.GetComponent<AudioSource>().clip;
+        if (_audioClip == null)
         {
             Debug.LogError("No audio clip; is null");
         }
