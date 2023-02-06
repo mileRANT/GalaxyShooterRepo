@@ -22,4 +22,9 @@ public class MainManuScript : MonoBehaviour
         SceneManager.LoadScene("SinglePlayer");
     }
 
+    public void LoadCoopGame()
+    {
+        SceneManager.LoadScene("Coop_mode");
+    }
+
 }

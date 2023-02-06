@@ -211,6 +211,8 @@ MonoBehaviour:
   _speed: 8
   horizontalInput: 0
   verticalInput: 0
+  isPlayerOne: 1
+  isPlayerTwo: 0
   _laser: {fileID: 2564565907255878807, guid: 40c89668456a07944b3407be6d217c84, type: 3}
   _tripleLaser: {fileID: 8490247148594201974, guid: 8fc55a9fc64474f4b8002a2d2e637f83, type: 3}
   _lives: 3

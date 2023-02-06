@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private bool _isGameOver;
+    public bool isCoopMode = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         if (_isGameOver && Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Main_menu_updated");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

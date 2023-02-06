@@ -695,6 +695,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_2
       objectReference: {fileID: 0}
+    - target: {fileID: 8947607374999431005, guid: 73b84843b84801843a1cdf9117159957, type: 3}
+      propertyPath: isPlayerOne
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947607374999431005, guid: 73b84843b84801843a1cdf9117159957, type: 3}
+      propertyPath: isPlayerTwo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8947607374999431006, guid: 73b84843b84801843a1cdf9117159957, type: 3}
       propertyPath: m_Color.g
       value: 0.5254902
@@ -902,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece30437ae9a72541a08c553ee5d6534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCoopMode: 1
 --- !u!4 &781125261
 Transform:
   m_ObjectHideFlags: 0
@@ -1609,6 +1618,10 @@ PrefabInstance:
     - target: {fileID: 8947607374999431004, guid: 73b84843b84801843a1cdf9117159957, type: 3}
       propertyPath: m_Name
       value: Player_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947607374999431005, guid: 73b84843b84801843a1cdf9117159957, type: 3}
+      propertyPath: isPlayerOne
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8947607374999431006, guid: 73b84843b84801843a1cdf9117159957, type: 3}
       propertyPath: m_Color.b
