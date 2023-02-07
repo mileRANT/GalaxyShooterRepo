@@ -118,6 +118,8 @@ GameObject:
   - component: {fileID: 8947607374999431005}
   - component: {fileID: 8947607374999431000}
   - component: {fileID: 1890889835}
+  - component: {fileID: 2625660089379670370}
+  - component: {fileID: 7597946141522579557}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -215,11 +217,7 @@ MonoBehaviour:
   isPlayerTwo: 0
   _laser: {fileID: 2564565907255878807, guid: 40c89668456a07944b3407be6d217c84, type: 3}
   _tripleLaser: {fileID: 8490247148594201974, guid: 8fc55a9fc64474f4b8002a2d2e637f83, type: 3}
-  _lives: 3
   _score: 0
-  _isTripleShotActive: 0
-  _isSpeedupActive: 0
-  _isShieldActive: 0
   shieldObject: {fileID: 930351543}
   _rightHurtObject: {fileID: 4949938236341943171}
   _leftHurtObject: {fileID: 6484492280146014356}
@@ -346,6 +344,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &2625660089379670370
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947607374999431004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db49b88b03484d3469dab636d84671cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7597946141522579557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947607374999431004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f774cef63a7a64dba751f971061186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3323812305351991621
 PrefabInstance:
   m_ObjectHideFlags: 0
