@@ -23,13 +23,13 @@ public class Asteroid : MonoBehaviour
             Debug.LogError("GM is null");
         }
 
-        if (_gameManager.isCoopMode)
-        {
-            _player = GameObject.Find("Player_1").GetComponent<Player>();
-        } else
-        {
+        //if (_gameManager.isCoopMode)
+        //{
+        //    _player = GameObject.Find("Player_1").GetComponent<Player>();
+        //} else
+        //{
             _player = GameObject.Find("Player").GetComponent<Player>();
-        }
+        //}
         if (_player == null)
         {
             Debug.LogError("Player is null");
