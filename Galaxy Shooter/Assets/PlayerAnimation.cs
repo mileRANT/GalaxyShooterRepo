@@ -18,31 +18,62 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        if (_player.isPlayerOne)
         {
-            _anim.SetBool("isTurnLeft", true);
-            _anim.SetBool("isTurnRight", false);
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                _anim.SetBool("isTurnLeft", true);
+                _anim.SetBool("isTurnRight", false);
+
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                _anim.SetBool("isTurnLeft", false);
+                _anim.SetBool("isTurnRight", true);
+
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
+            {
+                _anim.SetBool("isTurnLeft", false);
+                _anim.SetBool("isTurnRight", false);
+
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+            {
+                _anim.SetBool("isTurnLeft", false);
+                _anim.SetBool("isTurnRight", false);
+
+            }
+        } else //isplayertwo
+        {
+            if (Input.GetKeyDown(KeyCode.Keypad4))
+            {
+                _anim.SetBool("isTurnLeft", true);
+                _anim.SetBool("isTurnRight", false);
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad6))
+            {
+                _anim.SetBool("isTurnLeft", false);
+                _anim.SetBool("isTurnRight", true);
+
+            }
+
+            if (Input.GetKeyUp(KeyCode.Keypad4))
+            {
+                _anim.SetBool("isTurnLeft", false);
+                _anim.SetBool("isTurnRight", false);
+
+            }
+            else if (Input.GetKeyUp(KeyCode.Keypad6))
+            {
+                _anim.SetBool("isTurnLeft", false);
+                _anim.SetBool("isTurnRight", false);
+
+            }
 
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            _anim.SetBool("isTurnLeft", false);
-            _anim.SetBool("isTurnRight", true);
-
-        }
-        
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
-        {
-            _anim.SetBool("isTurnLeft", false);
-            _anim.SetBool("isTurnRight", false);
-
-        }
-        else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
-        {
-            _anim.SetBool("isTurnLeft", false);
-            _anim.SetBool("isTurnRight", false);
-
-        }
-
     }
 }

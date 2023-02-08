@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     private bool _isGameOver;
     public bool isCoopMode = false;
 
+    [SerializeField]
+    private UIManager _uiManager;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +23,28 @@ public class GameManager : MonoBehaviour
     {
         if (_isGameOver && Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("Main_menu_updated");
+            loadMainMenu();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
-        
+        if (Input.GetKeyDown(KeyCode.P) && !_isGameOver)
+        {
+            _uiManager.showPauseMenu();
+            Time.timeScale = 0f;
+        }
+
     }
 
     public void GameOver()
     {
         _isGameOver = true;
+    }
+
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene("Main_menu_updated");
     }
 }
